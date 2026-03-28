@@ -1,26 +1,58 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  --color-bg-primary:   #000000;
+  --color-bg-surface:   #0A0A0A;
+  --color-bg-subtle:    #111111;
+  --color-accent-gold:  #D4A853;
+  --color-text-primary: #F0EBE3;
+  --color-text-ghost:   #2A2A2A;
+  --color-border-base:  #0D0D0D;
+
+  --font-family-display: var(--font-cormorant), Georgia, serif;
+  --font-family-body:    var(--font-space-grotesk), system-ui, sans-serif;
+
+  --max-width-content: 1100px;
+
+  --letter-spacing-label: 0.18em;
+  --letter-spacing-wide:  0.22em;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer base {
+  *, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  html {
+    color-scheme: dark;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  body {
+    background-color: #000000;
+    color: #F0EBE3;
+    font-family: var(--font-space-grotesk), system-ui, sans-serif;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      transition-duration: 0.01ms !important;
+    }
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@layer utilities {
+  .font-display {
+    font-family: var(--font-cormorant), Georgia, serif;
+  }
+  .text-text-muted {
+    color: rgba(240,235,227,0.4);
+  }
+  .tracking-label {
+    letter-spacing: 0.18em;
+  }
+  .tracking-wide {
+    letter-spacing: 0.22em;
+  }
 }
