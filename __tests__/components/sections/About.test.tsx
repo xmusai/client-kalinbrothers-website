@@ -10,7 +10,7 @@ describe('About', () => {
   it('renders the headline', () => {
     render(<About />)
     expect(screen.getByRole('heading', { level: 2 })).toBeInTheDocument()
-    expect(screen.getByText(/different road/i)).toBeInTheDocument()
+    expect(screen.getByRole('heading', { level: 2, name: /different road/i })).toBeInTheDocument()
   })
 
   it('renders the photo placeholder', () => {
