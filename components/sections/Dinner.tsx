@@ -1,7 +1,13 @@
 import { Button } from '@/components/ui/Button'
 import { SectionLabel } from '@/components/ui/SectionLabel'
 
-const dinnerFacts = [
+type DinnerFact = {
+  value: string
+  description: string
+  small?: boolean
+}
+
+const dinnerFacts: DinnerFact[] = [
   {
     value: '12',
     description:
@@ -17,7 +23,7 @@ const dinnerFacts = [
     description: 'Germany, Belgium, or the Netherlands. Location confirmed with guests.',
     small: true,
   },
-] as const
+]
 
 export function Dinner() {
   return (
