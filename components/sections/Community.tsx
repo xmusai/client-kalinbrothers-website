@@ -1,27 +1,100 @@
-import { Button } from '@/components/ui/Button'
-import { SectionLabel } from '@/components/ui/SectionLabel'
+import Image from 'next/image'
+import Link from 'next/link'
 
 export function Community() {
   return (
     <section
       id="community"
-      className="px-12 py-24 text-center border-b border-border-base bg-bg-primary"
+      className="relative overflow-hidden flex flex-col items-center justify-center text-center"
+      style={{ minHeight: '80vh', borderBottom: '1px solid #1E1E1E' }}
     >
-      <SectionLabel className="justify-center">The community</SectionLabel>
+      {/* Background — dance.jpg is bright/energetic; position to center action */}
+      <Image
+        src="/images/dance.jpg"
+        alt="Kalin Brothers performing"
+        fill
+        className="object-cover"
+        style={{ objectPosition: '50% 60%', transform: 'scale(1.05)' }}
+        sizes="100vw"
+      />
 
-      <h2 className="font-display text-[clamp(2.5rem,5vw,3.5rem)] font-semibold leading-[1.0] tracking-[-0.02em] text-text-primary max-w-[520px] mx-auto mb-5">
-        You already made the decision.
-      </h2>
+      {/* Layered overlays: dark vignette all around + warm center falloff */}
+      <div
+        aria-hidden="true"
+        className="absolute inset-0"
+        style={{ background: 'rgba(8,8,8,0.76)' }}
+      />
+      <div
+        aria-hidden="true"
+        className="absolute inset-0"
+        style={{
+          background: 'radial-gradient(ellipse at 50% 50%, transparent 20%, rgba(8,8,8,0.45) 70%, rgba(8,8,8,0.7) 100%)',
+        }}
+      />
 
-      <p className="text-[0.8rem] font-body font-light text-text-muted leading-[1.9] max-w-[420px] mx-auto mb-10">
-        A space for the people who chose differently. Not a fan group — a community
-        built around one idea: you can build a life on content, and here&apos;s what
-        that actually looks like.
-      </p>
+      {/* Content */}
+      <div className="relative z-10 px-8 md:px-14 py-28 md:py-36 max-w-[720px] mx-auto">
 
-      <div className="flex items-center justify-center gap-4">
-        <Button variant="primary" href="/quiz">Take the quiz</Button>
-        <Button variant="ghost" href="#about">Learn more</Button>
+        <p
+          className="font-body uppercase mb-8"
+          style={{ fontSize: '0.58rem', letterSpacing: '0.26em', color: 'rgba(212,168,83,0.75)' }}
+        >
+          The community
+        </p>
+
+        <h2
+          className="font-display leading-[0.93] tracking-[-0.02em] mb-9"
+          style={{
+            fontSize: 'clamp(2.4rem, 7vw, 6rem)',
+            fontWeight: 300,
+            color: '#F5F0E8',
+            textShadow: '0 4px 40px rgba(0,0,0,0.6)',
+          }}
+        >
+          You already made<br />
+          <em
+            style={{ fontStyle: 'italic', color: '#D4A853' }}
+          >
+            the decision.
+          </em>
+        </h2>
+
+        <p
+          className="font-body font-light leading-[2] mb-12 mx-auto"
+          style={{ fontSize: '0.82rem', color: 'rgba(245,240,232,0.48)', maxWidth: '420px' }}
+        >
+          A space for the people who chose differently. Not a fan group —
+          a community built around one idea: you can build a life on content,
+          and here&apos;s what that actually looks like.
+        </p>
+
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-5">
+          <Link
+            href="/quiz"
+            id="community-cta-quiz"
+            className="font-body font-medium uppercase px-9 py-4 cursor-pointer transition-all duration-300 hover:opacity-85 hover:scale-[1.02]"
+            style={{
+              fontSize: '0.6rem',
+              letterSpacing: '0.2em',
+              background: '#F5F0E8',
+              color: '#080808',
+            }}
+          >
+            Take the quiz
+          </Link>
+          <Link
+            href="#about"
+            id="community-cta-about"
+            className="font-body uppercase cursor-pointer transition-colors duration-200"
+            style={{
+              fontSize: '0.6rem',
+              letterSpacing: '0.2em',
+              color: 'rgba(245,240,232,0.35)',
+            }}
+          >
+            Learn more →
+          </Link>
+        </div>
       </div>
     </section>
   )

@@ -1,18 +1,31 @@
 @import "tailwindcss";
 
 @theme {
-  --color-bg-primary:   #000000;
-  --color-bg-surface:   #0A0A0A;
-  --color-bg-subtle:    #111111;
-  --color-accent-gold:  #D4A853;
-  --color-text-primary: #F0EBE3;
-  --color-text-ghost:   #2A2A2A;
-  --color-border-base:  #0D0D0D;
+  /* Brand palette */
+  --color-obsidian:      #080808;
+  --color-surface:       #0A0A0A;
+  --color-surface-alt:   #0D0D0D;
+  --color-gold:          #D4A853;
+  --color-crimson:       #C41E3A;
+  --color-terra:         #C75E3A;
+  --color-ivory:         #F5F0E8;
+  --color-muted:         #777777;
+  --color-muted-light:   #AAAAAA;
 
+  /* Semantic aliases */
+  --color-bg-primary:    #080808;
+  --color-bg-surface:    #161616;
+  --color-bg-subtle:     #1E1E1E;
+  --color-accent-gold:   #D4A853;
+  --color-text-primary:  #F5F0E8;
+  --color-text-ghost:    #333333;
+  --color-border-base:   #1E1E1E;
+
+  /* Fonts */
   --font-family-display: var(--font-cormorant), Georgia, serif;
   --font-family-body:    var(--font-space-grotesk), system-ui, sans-serif;
 
-  --max-width-content: 1100px;
+  --max-width-content: 1280px;
 
   --letter-spacing-label: 0.18em;
   --letter-spacing-wide:  0.22em;
@@ -28,11 +41,21 @@
     color-scheme: dark;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    scroll-behavior: smooth;
+    /* Offset scroll for fixed nav */
+    scroll-padding-top: 80px;
   }
   body {
-    background-color: #000000;
-    color: #F0EBE3;
+    background-color: #080808;
+    color: #F5F0E8;
     font-family: var(--font-space-grotesk), system-ui, sans-serif;
+    overflow-x: hidden;
+    /* Smooth scroll momentum on iOS */
+    -webkit-overflow-scrolling: touch;
+  }
+  ::selection {
+    background: rgba(212, 168, 83, 0.25);
+    color: #F5F0E8;
   }
   @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after {
@@ -46,13 +69,73 @@
   .font-display {
     font-family: var(--font-cormorant), Georgia, serif;
   }
-  .text-text-muted {
-    color: rgba(240,235,227,0.4);
+  .font-body {
+    font-family: var(--font-space-grotesk), system-ui, sans-serif;
+  }
+  .text-muted {
+    color: rgba(245, 240, 232, 0.45);
+  }
+  .text-gold {
+    color: #D4A853;
+  }
+  .text-ivory {
+    color: #F5F0E8;
+  }
+  .text-terra {
+    color: #C75E3A;
+  }
+  .text-obsidian {
+    color: #080808;
   }
   .tracking-label {
     letter-spacing: 0.18em;
   }
-  .tracking-wide {
+  .tracking-wider-label {
     letter-spacing: 0.22em;
+  }
+  .bg-gold {
+    background-color: #D4A853;
+  }
+  .border-gold {
+    border-color: #D4A853;
+  }
+  /* Text shadow for readability over photos */
+  .text-shadow-dark {
+    text-shadow: 0 2px 20px rgba(0,0,0,0.9), 0 6px 60px rgba(0,0,0,0.7);
+  }
+  .text-shadow-subtle {
+    text-shadow: 0 1px 8px rgba(0,0,0,0.5);
+  }
+  /* Photo overlay gradients */
+  .photo-overlay-bottom {
+    background: linear-gradient(to top, rgba(8,8,8,0.95) 0%, rgba(8,8,8,0.5) 40%, transparent 100%);
+  }
+  .photo-overlay-left {
+    background: linear-gradient(to right, rgba(8,8,8,0.95) 0%, rgba(8,8,8,0.7) 50%, transparent 100%);
+  }
+  .photo-overlay-full {
+    background: rgba(8,8,8,0.6);
+  }
+  /* Gold thin line */
+  .gold-line {
+    display: block;
+    width: 2px;
+    background-color: #D4A853;
+    opacity: 0.6;
+  }
+  /* Section label style */
+  .label {
+    font-family: var(--font-space-grotesk), system-ui, sans-serif;
+    font-size: 0.58rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.26em;
+    color: rgba(212, 168, 83, 0.75);
+  }
+  /* Frosted glass effect */
+  .glass {
+    background: rgba(8, 8, 8, 0.85);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
   }
 }
