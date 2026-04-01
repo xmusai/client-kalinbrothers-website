@@ -103,7 +103,7 @@ export function Dinner() {
       </div>
 
       {/* Right: close-up.jpg — dark, intimate portrait — perfect match */}
-      <div className="relative" style={{ minHeight: '640px' }}>
+      <div className="relative min-h-[380px] md:min-h-[640px]">
         <Image
           src="/images/close-up.jpg"
           alt="Kalin Brothers — intimate portrait"

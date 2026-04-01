@@ -16,13 +16,13 @@ export function BrandDeals() {
       style={{ background: '#080808', borderBottom: '1px solid #1E1E1E' }}
     >
       {/* Left: acrobatic.jpg — sunny outdoor energy, contrasts the dark right col */}
-      <div className="relative overflow-hidden" style={{ minHeight: '580px' }}>
+      <div className="relative overflow-hidden min-h-[360px] md:min-h-[580px]">
         <Image
           src="/images/studio.jpg"
           alt="Kalin Brothers — brand portrait"
           fill
           className="object-cover"
-          style={{ objectPosition: '50% 35%', transform: 'scale(1.1)' }}
+          style={{ objectPosition: '50% 15%' }}
           sizes="(max-width: 768px) 100vw, 50vw"
         />
         {/* Right fade blends into copy column */}

@@ -59,7 +59,10 @@ export function Hero() {
       {/* ════════════════════════════════════════
           MAGAZINE COVER LAYOUT
           ════════════════════════════════════════ */}
-      <div className="absolute inset-0 flex flex-col justify-between px-8 md:px-14 lg:px-20 pt-28 pb-10 md:pb-14">
+      <div
+        className="absolute inset-0 flex flex-col justify-between px-8 md:px-14 lg:px-20 pt-28 md:pb-14"
+        style={{ paddingBottom: 'max(40px, calc(40px + env(safe-area-inset-bottom, 0px)))' }}
+      >
 
         {/* ── TOP ROW: magazine meta ── */}
         <div className="flex items-center justify-between">
@@ -197,7 +200,11 @@ export function Hero() {
                 style={{
                   fontSize: '0.58rem',
                   letterSpacing: '0.2em',
-                  color: 'rgba(245,240,232,0.3)',
+                  color: 'rgba(245,240,232,0.45)',
+                  minHeight: '44px',
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  padding: '0 4px',
                 }}
               >
                 Our story →

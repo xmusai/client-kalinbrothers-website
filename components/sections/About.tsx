@@ -81,13 +81,13 @@ export function About() {
       </div>
 
       {/* Right: brand cover photo — use studio.jpg (dark BG, faces visible) */}
-      <div className="relative overflow-hidden order-1 md:order-2" style={{ minHeight: '620px' }}>
+      <div className="relative overflow-hidden order-1 md:order-2 min-h-[400px] md:min-h-[620px]">
         <Image
           src="/images/brand-shot.jpg"
           alt="Kalin Brothers — brand portrait"
           fill
           className="object-cover"
-          style={{ objectPosition: '50% 25%', transform: 'scale(1.05)' }}
+          style={{ objectPosition: '50% 15%' }}
           sizes="(max-width: 768px) 100vw, 50vw"
         />
         {/* Subtle vignette edges */}
