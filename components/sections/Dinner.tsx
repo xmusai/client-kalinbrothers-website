@@ -1,5 +1,6 @@
 import Image from 'next/image'
 import Link from 'next/link'
+import { Reveal } from '@/components/ui/Reveal'
 
 type DinnerFact = {
   value: string
@@ -30,79 +31,90 @@ export function Dinner() {
       className="grid grid-cols-1 md:grid-cols-2"
       style={{ background: '#0D0D0D', borderBottom: '1px solid #1E1E1E' }}
     >
-      {/* Left: editorial copy + facts */}
+      {/* Left: copy */}
       <div
-        className="flex flex-col justify-center px-8 md:px-16 lg:px-20 py-20 md:py-32"
+        className="flex flex-col justify-center px-8 md:px-16 lg:px-20 py-20 md:py-36"
         style={{ borderRight: '1px solid #1E1E1E' }}
       >
-        <p
-          className="font-body uppercase mb-8"
-          style={{ fontSize: '0.58rem', letterSpacing: '0.26em', color: 'rgba(212,168,83,0.75)' }}
-        >
-          The dinner
-        </p>
+        <Reveal>
+          <div className="label-row">
+            <span className="label-rule" aria-hidden="true" />
+            <span className="label">The dinner</span>
+          </div>
+        </Reveal>
 
-        <h2
-          className="font-display leading-[0.93] tracking-[-0.02em] mb-7"
-          style={{ fontSize: 'clamp(2.2rem, 4.5vw, 4.2rem)', fontWeight: 600, color: '#F5F0E8' }}
-        >
-          12 guests.<br />One evening.
-        </h2>
+        <Reveal delay={80}>
+          <h2
+            className="font-display leading-[0.93] tracking-[-0.025em] mb-8"
+            style={{ fontSize: 'clamp(2.4rem, 4.5vw, 4.5rem)', fontWeight: 600, color: '#F5F0E8' }}
+          >
+            12 guests.<br />One evening.
+          </h2>
+        </Reveal>
 
-        <p
-          className="font-body font-light leading-[2] mb-12 max-w-[360px]"
-          style={{ fontSize: '0.82rem', color: 'rgba(245,240,232,0.48)' }}
-        >
-          Not a seminar. A table. You eat with them, you talk, you ask anything.
-          €100 — not the cost of the meal. The price of being taken seriously.
-        </p>
+        <Reveal delay={160}>
+          <p
+            className="font-body font-light leading-[2.1] mb-14 max-w-[380px]"
+            style={{ fontSize: '0.86rem', color: 'rgba(245,240,232,0.52)' }}
+          >
+            Not a seminar. A table. You eat with them, you talk, you ask anything.
+            €100 — not the cost of the meal. The price of being taken seriously.
+          </p>
+        </Reveal>
 
         {/* Facts */}
         <div className="flex flex-col mb-14">
-          {dinnerFacts.map(({ value, description, small }) => (
-            <div
-              key={value}
-              className="flex items-start gap-7 py-6"
-              style={{ borderTop: '1px solid #1E1E1E' }}
-            >
-              <span
-                className="font-display font-light leading-none flex-shrink-0"
-                style={{
-                  fontSize: small ? '1.05rem' : '2.8rem',
-                  color: '#D4A853',
-                  opacity: small ? 0.5 : 0.9,
-                  minWidth: '76px',
-                  paddingTop: small ? '4px' : 0,
-                }}
+          {dinnerFacts.map(({ value, description, small }, i) => (
+            <Reveal key={value} delay={220 + i * 90}>
+              <div
+                className="flex items-start gap-8 py-7"
+                style={{ borderTop: '1px solid #1E1E1E' }}
               >
-                {value}
-              </span>
-              <p
-                className="font-body font-light leading-[1.8] pt-1"
-                style={{ fontSize: '0.76rem', color: 'rgba(245,240,232,0.42)' }}
-              >
-                {description}
-              </p>
-            </div>
+                <span
+                  className="font-display font-light leading-none flex-shrink-0"
+                  style={{
+                    fontSize: small ? '1.1rem' : '3.2rem',
+                    color: '#D4A853',
+                    opacity: small ? 0.55 : 1,
+                    minWidth: '82px',
+                    paddingTop: small ? '5px' : 0,
+                  }}
+                >
+                  {value}
+                </span>
+                <p
+                  className="font-body font-light leading-[1.9] pt-1"
+                  style={{ fontSize: '0.8rem', color: 'rgba(245,240,232,0.48)' }}
+                >
+                  {description}
+                </p>
+              </div>
+            </Reveal>
           ))}
         </div>
 
-        <Link
-          href="/dinner"
-          id="dinner-cta-apply"
-          className="self-start font-body font-medium uppercase px-9 py-4 cursor-pointer transition-all duration-300 hover:opacity-85 hover:scale-[1.02]"
-          style={{
-            fontSize: '0.6rem',
-            letterSpacing: '0.2em',
-            background: '#F5F0E8',
-            color: '#080808',
-          }}
-        >
-          Apply for a seat
-        </Link>
+        <Reveal delay={520}>
+          <Link
+            href="/dinner"
+            id="dinner-cta-apply"
+            className="self-start font-body font-medium uppercase cursor-pointer transition-all duration-300 hover:opacity-80"
+            style={{
+              fontSize: '0.58rem',
+              letterSpacing: '0.22em',
+              background: '#F5F0E8',
+              color: '#080808',
+              padding: '16px 40px',
+              minHeight: '52px',
+              display: 'inline-flex',
+              alignItems: 'center',
+            }}
+          >
+            Apply for a seat
+          </Link>
+        </Reveal>
       </div>
 
-      {/* Right: close-up.jpg — dark, intimate portrait — perfect match */}
+      {/* Right: photo */}
       <div className="relative min-h-[380px] md:min-h-[640px]">
         <Image
           src="/images/close-up.jpg"
@@ -112,17 +124,10 @@ export function Dinner() {
           style={{ objectPosition: '55% 30%' }}
           sizes="(max-width: 768px) 100vw, 50vw"
         />
-        {/* Blends left edge into section */}
-        <div
-          aria-hidden="true"
-          className="absolute inset-0"
-          style={{ background: 'linear-gradient(to right, rgba(13,13,13,0.5) 0%, transparent 30%)' }}
-        />
-        <div
-          aria-hidden="true"
-          className="absolute inset-0"
-          style={{ background: 'linear-gradient(to top, rgba(13,13,13,0.4) 0%, transparent 40%)' }}
-        />
+        <div aria-hidden="true" className="absolute inset-0"
+          style={{ background: 'linear-gradient(to right, rgba(13,13,13,0.55) 0%, transparent 35%)' }} />
+        <div aria-hidden="true" className="absolute inset-0"
+          style={{ background: 'linear-gradient(to top, rgba(13,13,13,0.45) 0%, transparent 40%)' }} />
       </div>
     </section>
   )

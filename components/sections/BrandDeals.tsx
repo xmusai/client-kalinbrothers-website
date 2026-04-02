@@ -1,5 +1,6 @@
 import Image from 'next/image'
 import Link from 'next/link'
+import { Reveal } from '@/components/ui/Reveal'
 
 const audienceStats = [
   { value: '13.9M', label: 'followers' },
@@ -15,7 +16,7 @@ export function BrandDeals() {
       className="grid grid-cols-1 md:grid-cols-2"
       style={{ background: '#080808', borderBottom: '1px solid #1E1E1E' }}
     >
-      {/* Left: acrobatic.jpg — sunny outdoor energy, contrasts the dark right col */}
+      {/* Left: photo */}
       <div className="relative overflow-hidden min-h-[360px] md:min-h-[580px]">
         <Image
           src="/images/studio.jpg"
@@ -25,91 +26,93 @@ export function BrandDeals() {
           style={{ objectPosition: '50% 15%' }}
           sizes="(max-width: 768px) 100vw, 50vw"
         />
-        {/* Right fade blends into copy column */}
-        <div
-          aria-hidden="true"
-          className="absolute inset-0"
-          style={{ background: 'linear-gradient(to left, rgba(8,8,8,0.55) 0%, transparent 40%)' }}
-        />
-        <div
-          aria-hidden="true"
-          className="absolute inset-0"
-          style={{ background: 'linear-gradient(to top, rgba(8,8,8,0.4) 0%, transparent 35%)' }}
-        />
+        <div aria-hidden="true" className="absolute inset-0"
+          style={{ background: 'linear-gradient(to left, rgba(8,8,8,0.6) 0%, transparent 45%)' }} />
+        <div aria-hidden="true" className="absolute inset-0"
+          style={{ background: 'linear-gradient(to top, rgba(8,8,8,0.45) 0%, transparent 35%)' }} />
       </div>
 
-      {/* Right: brand deals copy */}
+      {/* Right: copy */}
       <div
-        className="flex flex-col justify-center px-8 md:px-16 lg:px-20 py-20 md:py-32"
+        className="flex flex-col justify-center px-8 md:px-16 lg:px-20 py-20 md:py-36"
         style={{ borderLeft: '1px solid #1E1E1E' }}
       >
-        <p
-          className="font-body uppercase mb-8"
-          style={{ fontSize: '0.58rem', letterSpacing: '0.26em', color: 'rgba(212,168,83,0.75)' }}
-        >
-          For brands
-        </p>
+        <Reveal>
+          <div className="label-row">
+            <span className="label-rule" aria-hidden="true" />
+            <span className="label">For brands</span>
+          </div>
+        </Reveal>
 
-        <h2
-          className="font-display leading-[0.93] tracking-[-0.02em] mb-7"
-          style={{ fontSize: 'clamp(2rem, 4vw, 3.8rem)', fontWeight: 600, color: '#F5F0E8' }}
-        >
-          Work with us.
-        </h2>
+        <Reveal delay={80}>
+          <h2
+            className="font-display leading-[0.93] tracking-[-0.025em] mb-8"
+            style={{ fontSize: 'clamp(2.2rem, 4vw, 4rem)', fontWeight: 600, color: '#F5F0E8' }}
+          >
+            Work with us.
+          </h2>
+        </Reveal>
 
-        <p
-          className="font-body font-light leading-[2] mb-12 max-w-[360px]"
-          style={{ fontSize: '0.82rem', color: 'rgba(245,240,232,0.48)' }}
-        >
-          Built without advertising — the audience is real, loyal, and
-          concentrated in five high-purchasing markets across Europe and the Americas.
-        </p>
+        <Reveal delay={160}>
+          <p
+            className="font-body font-light leading-[2.1] mb-12 max-w-[380px]"
+            style={{ fontSize: '0.86rem', color: 'rgba(245,240,232,0.52)' }}
+          >
+            Built without advertising — the audience is real, loyal, and
+            concentrated in five high-purchasing markets across Europe and the Americas.
+          </p>
+        </Reveal>
 
         {/* Audience stat grid */}
-        <div
-          className="grid grid-cols-2 mb-14"
-          style={{ border: '1px solid #1E1E1E', borderRight: 'none', borderBottom: 'none' }}
-        >
-          {audienceStats.map(({ value, label }) => (
-            <div
-              key={label}
-              className="px-7 py-6"
-              style={{ borderRight: '1px solid #1E1E1E', borderBottom: '1px solid #1E1E1E' }}
-            >
-              {/* Gold accent line */}
+        <Reveal delay={240}>
+          <div
+            className="grid grid-cols-2 mb-14"
+            style={{ border: '1px solid #1E1E1E', borderRight: 'none', borderBottom: 'none' }}
+          >
+            {audienceStats.map(({ value, label }) => (
               <div
-                aria-hidden="true"
-                style={{ width: '16px', height: '1px', background: '#D4A853', opacity: 0.45, marginBottom: '10px' }}
-              />
-              <p
-                className="font-display font-light leading-none tracking-[-0.02em] mb-1.5"
-                style={{ fontSize: '2rem', color: '#F5F0E8' }}
+                key={label}
+                className="px-7 py-7"
+                style={{ borderRight: '1px solid #1E1E1E', borderBottom: '1px solid #1E1E1E' }}
               >
-                {value}
-              </p>
-              <p
-                className="font-body uppercase"
-                style={{ fontSize: '0.52rem', letterSpacing: '0.2em', color: 'rgba(245,240,232,0.3)' }}
-              >
-                {label}
-              </p>
-            </div>
-          ))}
-        </div>
+                <div aria-hidden="true"
+                  style={{ width: '16px', height: '1px', background: '#D4A853', opacity: 0.5, marginBottom: '12px' }} />
+                <p
+                  className="font-display font-light leading-none tracking-[-0.02em] mb-2"
+                  style={{ fontSize: '2.2rem', color: '#F5F0E8' }}
+                >
+                  {value}
+                </p>
+                <p
+                  className="font-body uppercase"
+                  style={{ fontSize: '0.5rem', letterSpacing: '0.22em', color: 'rgba(245,240,232,0.32)' }}
+                >
+                  {label}
+                </p>
+              </div>
+            ))}
+          </div>
+        </Reveal>
 
-        <Link
-          href="/brands"
-          id="brands-cta-contact"
-          className="self-start font-body font-medium uppercase px-9 py-4 cursor-pointer transition-all duration-300 hover:opacity-85 hover:scale-[1.02]"
-          style={{
-            fontSize: '0.6rem',
-            letterSpacing: '0.2em',
-            background: '#D4A853',
-            color: '#080808',
-          }}
-        >
-          Get in touch
-        </Link>
+        <Reveal delay={320}>
+          <Link
+            href="/brands"
+            id="brands-cta-contact"
+            className="self-start font-body font-medium uppercase cursor-pointer transition-all duration-300 hover:opacity-80"
+            style={{
+              fontSize: '0.58rem',
+              letterSpacing: '0.22em',
+              background: '#D4A853',
+              color: '#080808',
+              padding: '16px 40px',
+              minHeight: '52px',
+              display: 'inline-flex',
+              alignItems: 'center',
+            }}
+          >
+            Get in touch
+          </Link>
+        </Reveal>
       </div>
     </section>
   )
